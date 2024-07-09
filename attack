@@ -1,0 +1,21 @@
+def kill_monster():
+    while actions.check_battle() is None:
+        print("Matando monstruos")
+        if event_th.is_set():
+            return
+        pg.press("space")
+        
+        while pg.locateOnScreen("imgs/redtarget.png", confidence=0.6, region=constants.REGION_BATTLE) is not None:
+            if event_th.is_set():
+                return
+            print("esperando monstruo morir")
+            
+            # Presiona F1, F2, F3 en un bucle con 1 segundo de intervalo
+            pg.press("f1")
+            time.sleep(1)
+            pg.press("f2")
+            time.sleep(1)
+            pg.press("f3")
+            time.sleep(1)
+        
+        print("buscando monstruo")
