@@ -5,17 +5,27 @@ def kill_monster():
             return
         pg.press("space")
         
+        # Iniciar rotación de teclas mientras la imagen esté presente
         while pg.locateOnScreen("imgs/redtarget.png", confidence=0.6, region=constants.REGION_BATTLE) is not None:
             if event_th.is_set():
                 return
-            print("esperando monstruo morir")
+            print("Esperando monstruo morir")
             
             # Presiona F1, F2, F3 en un bucle con 1 segundo de intervalo
             pg.press("f1")
+            print("Presionando F1")
             time.sleep(1)
+            # Verificar si la imagen aún está presente
+            if pg.locateOnScreen("imgs/redtarget.png", confidence=0.6, region=constants.REGION_BATTLE) is None:
+                break
             pg.press("f2")
+            print("Presionando F2")
             time.sleep(1)
+            # Verificar si la imagen aún está presente
+            if pg.locateOnScreen("imgs/redtarget.png", confidence=0.6, region=constants.REGION_BATTLE) is None:
+                break
             pg.press("f3")
+            print("Presionando F3")
             time.sleep(1)
         
-        print("buscando monstruo")
+        print("Buscando monstruo")
